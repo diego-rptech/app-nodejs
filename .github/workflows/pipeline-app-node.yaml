@@ -24,7 +24,7 @@ jobs:
   build-and-push:
     uses: diego-rptech/pipeline-templates/.github/workflows/build.yml@main
     with:
-      ecr-repository: 'jusfy-jusbill'
+      ecr-repository: 'diego-registry'
     secrets: inherit
 
   # update-manifests-develop:
@@ -34,7 +34,7 @@ jobs:
   #   with:
   #     environment: 'dev'
   #     ecr-repository: '944279429428.dkr.ecr.us-east-2.amazonaws.com'
-  #     application: 'jusfy-jusbill'
+  #     application: 'diego-registry'
   #   secrets: inherit
 
   # sync-argocd-develop:
