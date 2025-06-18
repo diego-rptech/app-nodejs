@@ -51,7 +51,7 @@ jobs:
 
   update-manifests-staging:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/staging') || (github.event_name == 'workflow_dispatch' && inputs.branch == 'staging')
-    uses: jusfy/workflows-templates/.github/workflows/update-manifest.yml@main
+    uses: diego-rptech/pipeline-templates/.github/workflows/update-manifest.yml@main
     needs: build-and-push
     with:
       environment: 'stg'
@@ -62,7 +62,7 @@ jobs:
   sync-argocd-staging:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/staging') || (github.event_name == 'workflow_dispatch' && inputs.branch == 'staging')
     needs: update-manifests-staging
-    uses: jusfy/workflows-templates/.github/workflows/sync-argocd.yml@main
+    uses: diego-rptech/pipeline-templates/.github/workflows/sync-argocd.yml@main
     with:
       application: 'diego-registry'
       environment: 'stg'
@@ -72,7 +72,7 @@ jobs:
 
   update-manifests-production:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.branch == 'main')
-    uses: jusfy/workflows-templates/.github/workflows/update-manifest.yml@main
+    uses: diego-rptech/pipeline-templates/.github/workflows/update-manifest.yml@main
     needs: build-and-push
     with:
       environment: 'prd'
@@ -83,7 +83,7 @@ jobs:
   sync-argocd-production:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.branch == 'main')
     needs: update-manifests-production
-    uses: jusfy/workflows-templates/.github/workflows/sync-argocd.yml@main
+    uses: diego-rptech/pipeline-templates/.github/workflows/sync-argocd.yml@main
     with:
       application: 'diego-registry'
       environment: 'prd'
